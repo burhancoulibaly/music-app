@@ -1,0 +1,25 @@
+.search-label, .search-button{
+	margin:auto;
+	display:inline-block;
+}
+.search-input{
+	display:inline-block;
+	width: 500px;
+	margin: auto;
+}
+.search-bar{
+	display:block;
+	margin:auto;
+	width: 700px;
+}
+.top-songs, .top-artist, .top-albums{
+	height: 300px;
+}
+.top-songs{
+	margin-top: 20px;
+}
+.topsongs, .topartist, .topalbums{
+	height:200px;
+	background-color: #efefef;
+	border-radius: 10px;
+}
