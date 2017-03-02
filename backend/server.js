@@ -18,7 +18,9 @@ app.use(function(err, req, res, next) {
   } else {
     next(err);
   }
-  res.setHeader('Access-Control-Allow-Origin','http://localhost:3000');
+  res.writeHead(200,{
+
+  });
 });
 request.method === 'OPTIONS'
 
@@ -31,22 +33,20 @@ var port = process.env.PORT || 3002;
 
 app.get("/getTopArtist", (req,res)=>{
   request.get({
-    url:"https://api.discogs.com/oauth/request_token",
+    url:"https://api.discogs.com//database/search?artist=Drake&{page=2&per_page=75}",
     headers:{
-    'Content-Type':'application/x-www-form-urlencoded',
-    'Authorization': 'OAuth oauth_consumer_key="eIkhkrmqZlZHMCHKUyzX",'+
-                     'oauth_nonce=3/01/2017,'+
-                     'oauth_signature="AUmQijxfEFwaLPVOEdGtTCjcHJUMDCam&",'+
-                     'oauth_signature_method="PLAINTEXT",'+
-                     'oauth_timestamp="current_timestamp",'+
-                     'oauth_callback="http://localhost:4200/music-main"',
-    'User-Agent':'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36'
+    'Content-Type':'application/json',
+    'User-Agent':'MyDiscogsMusicApp/1.0 +http://localhost:4200/music-main',
+    'Accept':'application/vnd.discogs.v2.discogs+json',
+    'Authorization':'Discogs '+
+                    'key=eIkhkrmqZlZHMCHKUyzX, '+
+                    'secret=AUmQijxfEFwaLPVOEdGtTCjcHJUMDCam',
     }
   },(err,reponse,body)=>{
     if(err){
       res.send(err);
     }else{
-      res.send(body);
+      res.send(JSON.parse(body));
     }
   })
 })

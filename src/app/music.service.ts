@@ -16,7 +16,7 @@ export class MusicService {
   getArtists(): Promise<Artist[]>{
   	return this.http.get('http://localhost:3002/getTopArtist')
   	.toPromise()
-  	.then(reponse => JSON.parse(JSON.stringify(reponse || null)))
+  	.then(reponse => reponse.json().results[0].title as Artist[])
   	.catch(this.handleError);
   }
 
