@@ -33,7 +33,7 @@ var port = process.env.PORT || 3002;
 
 app.get("/getTopArtist", (req,res)=>{
   request.get({
-    url:"https://api.discogs.com//database/search?artist=Drake&{page=2&per_page=75}",
+    url:"https://api.discogs.com//database/search?artist=Kanye West&{page=2&per_page=75}",
     headers:{
     'Content-Type':'application/json',
     'User-Agent':'MyDiscogsMusicApp/1.0 +http://localhost:4200/music-main',

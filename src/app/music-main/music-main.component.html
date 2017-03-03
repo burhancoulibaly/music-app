@@ -1,7 +1,9 @@
+<a (click)="updateCarouselBack()"><span class="glyphicon glyphicon-chevron-left"></span></a>
 <ul>
-	<li *ngFor="let artist of artists">
-		{{artist.name}}
+	<li class="list" *ngFor="let artist of artistslist">
+		<img src="{{artist.thumb}}">
 	</li>
 </ul>
+<a (click)="updateCarousel()"><span class="glyphicon glyphicon-chevron-right"></span></a>
 
 

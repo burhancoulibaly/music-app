@@ -22,4 +22,8 @@
 	height:200px;
 	background-color: #efefef;
 	border-radius: 10px;
+	overflow: auto;
+	width: 100%;
+	white-space: nowrap;
 }
+

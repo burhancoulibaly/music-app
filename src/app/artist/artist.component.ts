@@ -6,5 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./artist.component.css']
 })
 export class Artist{
-	name: string;
+
+	title: string;
+	thumb: string;
 }
