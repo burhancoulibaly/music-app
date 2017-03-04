@@ -62,8 +62,8 @@ export class MusicMainComponent implements OnInit {
 
   updateCarousel(){
     this.artistslist = [];
-    console.log("uCi1: "+this.i)
-    console.log("uCprev1: "+this.prevPicNum)
+    console.log("uCi1: "+this.i);
+    console.log("uCprev1: "+this.prevPicNum);
     for(this.i =(this.startI); this.i <  this.picnum + (this.startI); this.i++){
       if(this.artists[this.i].thumb != null){
         this.artistslist.push(this.artists[this.i]);
@@ -73,8 +73,26 @@ export class MusicMainComponent implements OnInit {
     }
     this.startI = this.picnum + this.startI;
     console.log(this.artistslist);
-    console.log("uCi2: "+this.i)
+    console.log("uCi2: "+this.i);
     console.log("uCprev2: "+this.prevPicNum)
+  }
+
+  updateCarouselBack(){
+    this.artistslist = [];
+    console.log("uCBi1: "+this.i);
+    console.log("uCBprev1: "+this.prevPicNum);
+    console.log("startI: "+this.startI);
+    this.startI = this.startI - (this.picnum);
+    for(this.i = this.startI - this.prevPicNum; this.i < this.startI; this.i++){
+      if(this.artists[this.i].thumb != null){
+        this.artistslist.push(this.artists[this.i]);
+      }
+      this.count--;
+      console.log("count: "+this.count);
+    }
+    console.log(this.artistslist);
+    console.log("uCBi2: "+this.i);
+    console.log("uCBprev2: "+this.prevPicNum);
   }
   
   ngOnInit() {
