@@ -82,8 +82,8 @@ export class MusicMainComponent implements OnInit {
     console.log("uCBi1: "+this.i);
     console.log("uCBprev1: "+this.prevPicNum);
     console.log("startI: "+this.startI);
-    this.startI = this.startI - (this.picnum);
-    for(this.i = this.startI - this.prevPicNum; this.i < this.startI; this.i++){
+    this.startI = this.startI - (this.prevPicNum);
+    for(this.i = this.startI; this.i < this.startI; this.i++){
       if(this.artists[this.i].thumb != null){
         this.artistslist.push(this.artists[this.i]);
       }
