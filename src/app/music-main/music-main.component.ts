@@ -62,7 +62,7 @@ export class MusicMainComponent implements OnInit {
     this.w = window.innerWidth;
     this.picnum = Math.floor(this.w/160)-1;
 
-    for(this.i = this.i - this.prevPicNum; this.i < this.count + (this.picnum); this.i++){
+    for(this.i = this.i - this.prevPicNum; this.i < this.startI + (this.picnum); this.i++){
       if(this.artists[this.i].thumb != null){
         this.artistslist.push(this.artists[this.i]);
       }
