@@ -1,9 +1,16 @@
-<a (click)="updateCarouselBack()"><span class="glyphicon glyphicon-chevron-left"></span></a>
 <ul>
-	<li class="list" *ngFor="let artist of artistslist">
+	<div class="arrow-left">
+		<a [class.greyed] = "isGreyedLeft" (click)="updateCarouselBack()"><span class="glyphicon glyphicon-chevron-left"></span></a>
+	</div>
+	<div>
+		<li class="list" *ngFor="let artist of artistslist">
 		<img src="{{artist.thumb}}">
-	</li>
+		</li>
+	</div>
+	<div class="arrow-right">
+		<a [class.greyed] = "isGreyedRight" (click)="updateCarousel()"><span class="glyphicon glyphicon-chevron-right"></span></a>
+	</div>
 </ul>
-<a (click)="updateCarousel()"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
 
 

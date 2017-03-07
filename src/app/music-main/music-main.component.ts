@@ -20,6 +20,9 @@ export class MusicMainComponent implements OnInit {
   count: number = 0;
   i: number = 0;
   startI:number = 0;
+  isGreyedLeft:boolean;
+  isGreyedRight:boolean;
+
 
   @HostListener('window:resize')
   onResize(){
@@ -37,11 +40,22 @@ export class MusicMainComponent implements OnInit {
   		.then(artists => {
   			this.artists = artists;
   			console.log(this.artists);
+        console.log(this.artists.length);
         this.getArtistCallback();   
   	});
   }
 
   getArtistCallback(){
+    if(this.count - this.prevPicNum <= 0){
+      this.isGreyedRight = false;
+      this.isGreyedLeft = true;
+    }else if(this.count + this.prevPicNum >= this.artists.length-1){
+      this.isGreyedLeft = false;
+      this.isGreyedRight = true;
+    }else{
+      this.isGreyedRight = false;
+      this.isGreyedLeft = false;
+    }
     console.log("gACprev1: "+this.prevPicNum)
     console.log("gACi1: "+this.i);
     this.artistslist = [];
@@ -53,46 +67,60 @@ export class MusicMainComponent implements OnInit {
         this.artistslist.push(this.artists[this.i]);
       }
     }
+
     this.prevPicNum = this.picnum;
-    this.startI = this.prevPicNum;
     console.log(this.artistslist);
-    console.log("gACi2: "+this.i);
-    console.log("gACprev2: "+this.prevPicNum)
   }
 
   updateCarousel(){
+    if(this.count + this.prevPicNum >= this.artists.length-1){
+      this.isGreyedRight = true;
+      this.isGreyedLeft = false;
+    }else if(this.count - this.prevPicNum + 2 <= 0){
+      this.isGreyedLeft = true;
+      this.isGreyedRight = false;
+    }
+    else{
+      this.isGreyedLeft = false;
+      this.isGreyedRight = false;
+    }
     this.artistslist = [];
     console.log("uCi1: "+this.i);
     console.log("uCprev1: "+this.prevPicNum);
-    for(this.i =(this.startI); this.i <  this.picnum + (this.startI); this.i++){
+    this.count = this.count + this.prevPicNum;
+    console.log("count: "+this.count);
+    for(this.i = this.count; this.i <  this.count + this.prevPicNum; this.i++){
       if(this.artists[this.i].thumb != null){
         this.artistslist.push(this.artists[this.i]);
       }
-      this.count++;
-      console.log("count: "+this.count);
     }
-    this.startI = this.picnum + this.startI;
     console.log(this.artistslist);
-    console.log("uCi2: "+this.i);
-    console.log("uCprev2: "+this.prevPicNum)
   }
 
   updateCarouselBack(){
+    if(this.count + this.prevPicNum >= this.artists.length-1){
+      this.isGreyedRight = true;
+      this.isGreyedLeft = false;
+    }else if(this.count - this.prevPicNum<= 0){
+      this.isGreyedLeft = true;
+      this.isGreyedRight = false;
+    }
+    else{
+      this.isGreyedLeft = false;
+      this.isGreyedRight = false;
+    }
     this.artistslist = [];
-    console.log("uCBi1: "+this.i);
-    console.log("uCBprev1: "+this.prevPicNum);
-    console.log("startI: "+this.startI);
-    this.startI = this.startI - (this.prevPicNum);
-    for(this.i = this.startI; this.i < this.startI; this.i++){
+    console.log("uCBi1: "+(this.count - this.prevPicNum));
+    console.log("uCBprev1: "+this.prevPicNum);    
+    for(this.i = this.count - this.prevPicNum; this.i < this.count; this.i++){
       if(this.artists[this.i].thumb != null){
         this.artistslist.push(this.artists[this.i]);
+      }else{
+        continue;
       }
-      this.count--;
-      console.log("count: "+this.count);
     }
+    this.count = this.count - this.prevPicNum;
     console.log(this.artistslist);
-    console.log("uCBi2: "+this.i);
-    console.log("uCBprev2: "+this.prevPicNum);
   }
   
   ngOnInit() {
