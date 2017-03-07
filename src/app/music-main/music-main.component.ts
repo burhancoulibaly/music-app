@@ -76,7 +76,7 @@ export class MusicMainComponent implements OnInit {
     if(this.count + this.prevPicNum >= this.artists.length-1){
       this.isGreyedRight = true;
       this.isGreyedLeft = false;
-    }else if(this.count - this.prevPicNum + 2 <= 0){
+    }else if(this.count - this.prevPicNum <= 0){
       this.isGreyedLeft = true;
       this.isGreyedRight = false;
     }
