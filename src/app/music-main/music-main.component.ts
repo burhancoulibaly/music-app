@@ -119,24 +119,8 @@ export class MusicMainComponent implements OnInit {
       }
       console.log("prevPicNum: "+this.prevPicNum)
       console.log(this.artistslist);
-    }else if(this.index >= 0){
-      for(this.i = 0; this.i<this.prevPicNum;this.i++){
-        this.artistslist.push(this.artists[this.i]);
-      }
-      this.index = this.i;
-      if(this.i+1 >= 49){
-        this.isGreyedRight = true;
-        this.isGreyedLeft = false;
-      }else if(this.index - this.prevPicNum == 0){
-        this.isGreyedRight = false;
-        this.isGreyedLeft = true;
-      }else{
-        this.isGreyedRight = false;
-        this.isGreyedLeft = false;
-      }
     }
   }
-  
   ngOnInit() {
   	this.getArtists();
   }
