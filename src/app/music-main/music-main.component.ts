@@ -9,6 +9,7 @@ import {MusicService} from '../music.service';
   selector: 'music-main',
   templateUrl: './music-main.component.html',
   styleUrls: ['./music-main.component.css']
+  
 })
 export class MusicMainComponent implements OnInit {
   artists: Artist[];
@@ -58,7 +59,7 @@ export class MusicMainComponent implements OnInit {
     }
     this.index = this.i;
     this.prevPicNum = this.picnum;
-    if(this.i+1 >= 49){
+    if(this.i+1 >= this.artists.length - 1){
       this.isGreyedRight = true;
       this.isGreyedLeft = false;
     }else if(this.index - this.prevPicNum == 0){
@@ -84,7 +85,7 @@ export class MusicMainComponent implements OnInit {
       }
     }
     this.index = this.i;
-    if(this.i+1 >= 49){
+    if(this.i+1 >= this.artists.length - 1){
       this.isGreyedRight = true;
       this.isGreyedLeft = false;
     }else if(this.index - this.prevPicNum == 0){
@@ -107,7 +108,7 @@ export class MusicMainComponent implements OnInit {
         this.artistslist.push(this.artists[this.i]);
       }
       this.index = this.i;
-      if(this.i+1 >= 49){
+      if(this.i+1 >= this.artists.length - 1){
         this.isGreyedRight = true;
         this.isGreyedLeft = false;
       }else if(this.index - this.prevPicNum == 0){
