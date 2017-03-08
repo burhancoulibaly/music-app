@@ -16,6 +16,7 @@ img{
 .greyed{
 	opacity: 0.5;
 	filter: grayscale(100%) blur(1px);
+	pointer-events: none
 }
 .arrow-right{
 	display:inline-block;

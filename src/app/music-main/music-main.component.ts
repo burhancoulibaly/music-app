@@ -32,6 +32,7 @@ export class MusicMainComponent implements OnInit {
   	private router: Router
   	) { }
 
+
   getArtists(): void{
   	this.musicService
   		.getArtists()
@@ -53,41 +54,50 @@ export class MusicMainComponent implements OnInit {
     for(this.i = this.index - (this.prevPicNum); this.i < (this.index - this.prevPicNum) + this.picnum; this.i++){
       if(this.artists[this.i] != undefined){
         this.artistslist.push(this.artists[this.i]);
-      }else{ 
-        this.artistslist = this.artistslist;  
-        continue;
       }
     }
     this.index = this.i;
     this.prevPicNum = this.picnum;
+    if(this.i+1 >= 49){
+      this.isGreyedRight = true;
+      this.isGreyedLeft = false;
+    }else if(this.index - this.prevPicNum == 0){
+      this.isGreyedRight = false;
+      this.isGreyedLeft = true;
+    }else{
+      this.isGreyedRight = false;
+      this.isGreyedLeft = false;
+    }
     console.log("picnum: "+this.picnum);
     console.log("prevPicNum: "+this.prevPicNum);
     console.log(this.artistslist);
+    console.log(this.index - (this.prevPicNum));
   }
 
   updateCarousel(){
     var count = 0;
     this.artistslist = [];
-    if(this.artists[this.index] != undefined){
-      for(this.i  = this.index; this.i <  this.index + this.prevPicNum; this.i++){ 
-        if(this.artists[this.i] != undefined){
-          this.artistslist.push(this.artists[this.i]);
-          count++;
-        }else{
-          break;
-        }
+    for(this.i  = this.index; this.i <  this.index + this.prevPicNum; this.i++){ 
+      if(this.artists[this.i] != undefined){
+        this.artistslist.push(this.artists[this.i]);
+        count++;
       }
+    }
     this.index = this.i;
+    if(this.i+1 >= 49){
+      this.isGreyedRight = true;
+      this.isGreyedLeft = false;
+    }else if(this.index - this.prevPicNum == 0){
+      this.isGreyedRight = false;
+      this.isGreyedLeft = true;
+    }else{
+      this.isGreyedRight = false;
+      this.isGreyedLeft = false;
+    }
     console.log("prevPicNum: "+this.prevPicNum)
     console.log(this.artistslist);
-    }else if(this.index > 49){
-      console.log(this.index - this.prevPicNum);
-      for(this.i = this.index - this.prevPicNum;this.i<this.artists.length;this.i++){
-          this.artistslist.push(this.artists[this.i]);
-        }
-        this.index = this.index - this.prevPicNum;
-    }    
-  }
+  }   
+  
 
   
   updateCarouselBack(){
@@ -97,6 +107,16 @@ export class MusicMainComponent implements OnInit {
         this.artistslist.push(this.artists[this.i]);
       }
       this.index = this.i;
+      if(this.i+1 >= 49){
+        this.isGreyedRight = true;
+        this.isGreyedLeft = false;
+      }else if(this.index - this.prevPicNum == 0){
+        this.isGreyedRight = false;
+        this.isGreyedLeft = true;
+      }else{
+        this.isGreyedRight = false;
+        this.isGreyedLeft = false;
+      }
       console.log("prevPicNum: "+this.prevPicNum)
       console.log(this.artistslist);
     }else if(this.index >= 0){
@@ -104,6 +124,16 @@ export class MusicMainComponent implements OnInit {
         this.artistslist.push(this.artists[this.i]);
       }
       this.index = this.i;
+      if(this.i+1 >= 49){
+        this.isGreyedRight = true;
+        this.isGreyedLeft = false;
+      }else if(this.index - this.prevPicNum == 0){
+        this.isGreyedRight = false;
+        this.isGreyedLeft = true;
+      }else{
+        this.isGreyedRight = false;
+        this.isGreyedLeft = false;
+      }
     }
   }
   
