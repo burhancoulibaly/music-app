@@ -22,6 +22,9 @@ export class MusicMainComponent implements OnInit {
   isGreyedRight:boolean;
   i:number;
 
+  ngOnInit() {
+    this.getArtists();
+  }
 
   @HostListener('window:resize')
   onResize(){
@@ -59,7 +62,7 @@ export class MusicMainComponent implements OnInit {
     }
     this.index = this.i;
     this.prevPicNum = this.picnum;
-    if(this.i+1 >= this.artists.length - 1){
+    if(this.i >= this.artists.length - 1){
       this.isGreyedRight = true;
       this.isGreyedLeft = false;
     }else if(this.index - this.prevPicNum == 0){
@@ -85,7 +88,7 @@ export class MusicMainComponent implements OnInit {
       }
     }
     this.index = this.i;
-    if(this.i+1 >= this.artists.length - 1){
+    if(this.i >= this.artists.length - 1){
       this.isGreyedRight = true;
       this.isGreyedLeft = false;
     }else if(this.index - this.prevPicNum == 0){
@@ -108,7 +111,7 @@ export class MusicMainComponent implements OnInit {
         this.artistslist.push(this.artists[this.i]);
       }
       this.index = this.i;
-      if(this.i+1 >= this.artists.length - 1){
+      if(this.i >= this.artists.length - 1){
         this.isGreyedRight = true;
         this.isGreyedLeft = false;
       }else if(this.index - this.prevPicNum == 0){
@@ -122,8 +125,4 @@ export class MusicMainComponent implements OnInit {
       console.log(this.artistslist);
     }
   }
-  ngOnInit() {
-  	this.getArtists();
-  }
-
 }
