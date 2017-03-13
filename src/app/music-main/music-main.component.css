@@ -12,6 +12,9 @@ ul{
 	height: 170px;
 	padding:11px;
 	margin:5px -7px 0px 0px;
+	position: relative;
+	right: 0;
+	animation: 2s slidyr 1;
 }
 .greyed{
 	opacity: 0.5;
@@ -27,4 +30,14 @@ ul{
 	left: 65px;
 	position: absolute;
 	margin-top: 80px;
+}
+
+@keyframes slidyr{
+	0%{
+		right: -100%;
+		visibility: hidden;
+	}
+	100%{
+		right:0%;
+	}
 }
